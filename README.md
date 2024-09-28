@@ -5,6 +5,6 @@
 -ZOD
 -Mongoose,MongoDB 
 -JWT
--Bcrypt-
+-Bcrypt
 -Socket.io-
 -ioredis, Redis
