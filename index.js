@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const mainRouter = require("./Routes/index");
 const cors = require("cors");
 const socketIo = require('socket.io');
-const setupSocketIO = require('./SocketHandlers/index').default;
+const setupSocketIO = require('./SocketHandlers/index');
 
 const app = express();
 const server = http.createServer(app);

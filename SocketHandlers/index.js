@@ -1,4 +1,4 @@
-import setupRoomHandlers from "./roomHandler";
+const setupRoomHandlers =require("./roomHandler")
 function setupSocketIO(io) {
     io.on('connection', (socket) => {
       console.log('A user connected');
@@ -12,4 +12,4 @@ function setupSocketIO(io) {
     });
   }
   
-  export default setupSocketIO;
+  module.exports = setupSocketIO;
