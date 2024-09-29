@@ -3,8 +3,18 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const mainRouter = require("./Routes/index");
 const cors = require("cors");
+const socketIo = require('socket.io');
+const setupSocketIO = require('./SocketHandlers/index').default;
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});//setting up socket
 dotenv.config();
 
 app.use(express.json());
@@ -12,14 +22,7 @@ app.use(cors());
 
 app.use("/api/v1", mainRouter);
 
-// /api/v1/user/signup
-// /api/v1/user/signin
-// /api/v1/user/changePassword.....
-
-// /api/v1/account/transferMoney
-// /api/v1/account/balance
-
-//database
+setupSocketIO(io);
 
 const connectDB = async () => {
   try {

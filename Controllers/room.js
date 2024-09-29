@@ -36,6 +36,7 @@ const createRoom = async (req, res) => {
 
     res.status(201).json({
       message: 'Room created successfully',
+      name:name,
       roomId: newRoom._id,  // Returning the roomId for future use
     });
   } catch (error) {
