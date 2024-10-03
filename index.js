@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const mainRouter = require("./Routes/index");
+const http=require("http")
 const cors = require("cors");
 const socketIo = require('socket.io');
 const setupSocketIO = require('./SocketHandlers/index');
@@ -37,7 +38,7 @@ app.get("/", (req, res) => {
   res.json("Server is up and running");
 });
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   connectDB();
   console.log("Server is running on port: " + process.env.PORT);
 });

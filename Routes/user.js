@@ -16,7 +16,8 @@ router.post("/signin",signIn)
 router.put("/",authMiddleware,updateUser)
 
 //<<---------Get User(Filterable)---------------->>
-router.get("/bulk",authMiddleware,getUser)
+router.get("/bulk",authMiddleware,)
 
 module.exports=router
 
+getUser

@@ -1,10 +1,10 @@
 const dataMemberChangeHandler=require("./dataMemberChangeHandler");
 function setupRoomHandlers(io, socket) {
     // Join Room
-    socket.on('join room', ({room , userId}) => {
-      socket.join(room);
-      console.log(`User joined room: ${room}`);
-      socket.emit('room joined', room);
+    socket.on('join room', ({roomId}) => {
+      socket.join(roomId);
+      console.log(`User joined room: ${roomId}`);
+      socket.emit('room joined', roomId);
     });
     // any change in room properties like code content , language , input 
     dataMemberChangeHandler(io,socket);
