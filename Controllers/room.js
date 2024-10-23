@@ -46,5 +46,40 @@ const createRoom = async (req, res) => {
     });
   }
 };
+//Get rooms for specific userId
+const getUserSpecificRooms=async (req,res)=>{
+  try{
+    const userId=req.userId?req.userId:req.body.userId;
+    console.log(userId+" userId from controller ")
+    // Step 1: Find the user by their userId
+    const user = await User.findOne({ _id:userId });
 
-module.exports = { createRoom };
+    if (!user) {
+      throw new Error('User not found');
+    }
+    console.log(user+" user from controller ")
+
+    // Step 2: Get all room IDs (createdRooms + joinedRooms)
+    const roomIds = [...user.roomsCreated, ...user.roomsJoined];
+
+    if (roomIds.length === 0) {
+      return res.status(400).json({
+        rooms:[]
+     })
+    }
+
+    // Step 3: Find all rooms that match the room IDs
+    const allRooms = await Room.find({ _id: { $in: roomIds } });
+    const rooms=allRooms.map(({_id,name,language,code,participants,
+      lastUpdated})=>{
+      return {_id,name,language,code,participants,lastUpdated};
+    })
+    res.status(200).json({
+       rooms
+    }) // Returning the room details
+  }catch(err){
+
+  }
+}
+
+module.exports = { createRoom ,getUserSpecificRooms};

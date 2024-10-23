@@ -3,6 +3,7 @@ const {authMiddleware}=require("../Middlewares/authMiddleware")
 const {createRoom,getUserSpecificRooms}=require("../Controllers/room");
 const { getUser } = require('../Controllers/user');
 
+
 const router=express.Router();
 
 ////<<--------------Room creation-------------->>
