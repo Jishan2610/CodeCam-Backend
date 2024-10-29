@@ -108,7 +108,7 @@ const signIn = async (req, res) => {
     process.env.JWT_SECRET,
     { expiresIn: "1h" }
   );
-  return res.status(200).json({ token: token });
+  return res.status(200).json({ token: token,userId:user._id });
 };
 
 ///<<--------------UPDATE-------------------->>

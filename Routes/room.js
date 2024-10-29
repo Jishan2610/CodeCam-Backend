@@ -9,7 +9,8 @@ const router=express.Router();
 ////<<--------------Room creation-------------->>
 router.post("/create",authMiddleware,createRoom)
 ////<<--------------Get User Specific Rooms-------------->>
-router.get("/getRooms",authMiddleware,getUserSpecificRooms)
+router.get("/getRooms",authMiddleware
+    ,getUserSpecificRooms)
 
 module.exports=router
 

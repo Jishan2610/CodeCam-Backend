@@ -1,6 +1,7 @@
 const Redis = require("ioredis");
 
-const redisClient = new Redis();  // Initialize Redis connection
+const redisClient = new Redis({maxRetriesPerRequest: null});  // Initialize Redis connection//Also this will be the redis publisher 
+
 
 // Handle Redis connection success
 redisClient.on("connect", () => {
@@ -27,5 +28,6 @@ const gracefulShutdown = () => {
 
 process.on("SIGINT", gracefulShutdown);  // Handle CTRL+C shutdown
 process.on("SIGTERM", gracefulShutdown);  // Handle termination
+
 
 module.exports = redisClient;  // Export the Redis client
